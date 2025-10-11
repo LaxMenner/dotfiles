@@ -6,4 +6,7 @@ window-decoration = true
 # keybind = global:cmd+/=toggle_quick_terminal
 macos-option-as-alt = true
 background-opacity = 0.7
+window-width = 199
+window-height = 49
+# maximize = true
 # background-blur-radius = 20 
