@@ -39,7 +39,7 @@ vim.keymap.set("n", "[g", function()
 	vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
 end)
 
-vim.keymap.set("n", "<leader><leader>", function()
+vim.keymap.set("n", "<leader>r", function()
 	vim.cmd("so")
 end)
 
