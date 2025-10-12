@@ -31,6 +31,16 @@ return {
 			color = { fg = colors.magenta2, gui = "bold" },
 		}
 
+		local diagnostics = {
+			"diagnostics",
+			sources = { "nvim_lsp" },
+			sections = { "error", "warn", "info", "hint" },
+			symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			colored = true,
+			update_in_insert = false,
+			always_visible = false,
+		}
+
 		require("lualine").setup({
 			options = {
 				theme = custom,
@@ -39,7 +49,7 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
-				lualine_c = { "filename" },
+				lualine_c = { "filename", diagnostics },
 				lualine_x = { lsp_component, "encoding", "fileformat", "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },

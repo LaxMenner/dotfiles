@@ -8,6 +8,14 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
+		local on_attach = function(client, bufnr)
+			local bufopts = { buffer = bufnr, remap = false }
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+		end
+
 		do
 			local orig_util_open = vim.lsp.util.open_floating_preview
 			vim.lsp.util.open_floating_preview = function(contents, syntax, opts, ...)
@@ -45,6 +53,7 @@ return {
 				function(server_name)
 					local opts = servers[server_name] or {}
 					opts.capabilities = capabilities
+					opts.on_attach = on_attach
 					require("lspconfig")[server_name].setup(opts)
 				end,
 			},
